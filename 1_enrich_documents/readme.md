@@ -147,10 +147,14 @@ POST full_stock_data/_update_by_query
     }
   }
 }
+```
 
 
 GET full_stock_data/_doc/4
 
+## Conclusion
+
+```
 GET _cat/indices/.enrich-add_company_data_policy*,companies,full_stock_data?s=i&v&h=idx,storeSize
 ```
 
