@@ -1,6 +1,8 @@
 # Elastic Workshop #1 – Enrich documents
 
-All queries for the workshop:
+You can find here all Queries in full length for the workshop [Elastic Workshop #1 – Enrich documents](https://cdax.ch/2022/01/28/elastic-workshop-1-enrich-documents/)
+
+## Create documents that will be later enriched
 
 ```
 POST _bulk
@@ -27,8 +29,11 @@ PUT stocks/_doc/2
   "ticker": "MDB",
   "last_trade": 365
 }
+```
 
+## Add an enrichment policy
 
+```
 PUT /_enrich/policy/add_company_data_policy
 {
   "match": {
@@ -43,8 +48,11 @@ PUT /_enrich/policy/add_company_data_policy/_execute
 
 
 GET .enrich-add_company_data_policy
+```
 
+## Add a pipeline that uses the enrichment policy
 
+```
 PUT _ingest/pipeline/enrich_stock_data
 {
   "processors": [
@@ -63,8 +71,12 @@ PUT _ingest/pipeline/enrich_stock_data
     }
   ]
 }
+```
 
 
+## Enrich existing documents
+
+```
 POST _reindex/
 {
   "source": {
@@ -76,25 +88,24 @@ POST _reindex/
   }
 }
 
-
 GET full_stock_data/_search
+```
 
+## Enrich incoming data
 
+```
 PUT /full_stock_data/_doc/3?pipeline=enrich_stock_data
 {
   "ticker": "SPLK",
   "last_trade": 113
 }
 
-
 GET full_stock_data/_doc/3
-
 
 PUT full_stock_data/_settings
 {
   "index.default_pipeline": "enrich_stock_data"
 }
-
 
 POST companies/_doc/4
 {
@@ -105,16 +116,22 @@ POST companies/_doc/4
   "market_cap": "40B"
 }
 
-
 PUT full_stock_data/_doc/4
 {
   "ticker": "DDOG",
   "last_trade": 113
 }
 
-
 GET full_stock_data/_doc/4
+```
 
+
+## Fix documents that could not be enriched by the last run
+
+```
+PUT /_enrich/policy/add_company_data_policy/_execute
+
+GET .enrich-add_company_data_policy
 
 POST full_stock_data/_update_by_query
 {
@@ -133,7 +150,6 @@ POST full_stock_data/_update_by_query
 
 
 GET full_stock_data/_doc/4
-
 
 GET _cat/indices/.enrich-add_company_data_policy*,companies,full_stock_data?s=i&v&h=idx,storeSize
 ```
