@@ -283,6 +283,7 @@ PUT _ingest/pipeline/split-city-string-to-array
      {
        "script": {
          "tag": "script", 
+         "ignore_failure": true, 
          "source": """
             ctx['city_name'] = ctx['city_array'].0;
             def split_statezip=ctx['city_array'].1.splitOnToken(' ');
@@ -354,6 +355,7 @@ PUT _ingest/pipeline/split-city-string-to-array
      {
        "script": {
          "tag": "script", 
+         "ignore_failure": true, 
          "source": """
             ctx['city_name'] = ctx['city_array'].0;
             def split_statezip=ctx['city_array'].1.splitOnToken(' ');
@@ -430,6 +432,7 @@ PUT _ingest/pipeline/split-city-string-to-array
      {
        "script": {
          "tag": "script", 
+         "ignore_failure": true, 
          "source": """
             ctx['city_name'] = ctx['city_array'].0;
             def split_statezip=ctx['city_array'].1.splitOnToken(' ');
@@ -512,6 +515,7 @@ PUT _ingest/pipeline/split-city-string-to-array
      {
        "script": {
          "tag": "script", 
+         "ignore_failure": true, 
          "source": """
             ctx['city_name'] = ctx['city_array'].0;
             def split_statezip=ctx['city_array'].1.splitOnToken(' ');

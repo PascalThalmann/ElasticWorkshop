@@ -147,10 +147,9 @@ POST full_stock_data/_update_by_query
     }
   }
 }
-```
-
 
 GET full_stock_data/_doc/4
+```
 
 ## Conclusion
 
