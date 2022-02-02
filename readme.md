@@ -1,37 +1,11 @@
-## Welcome to GitHub Pages
+## Welcome to the Elasticsearch Workshop Repo
 
-You can use the [editor on GitHub](https://github.com/PascalThalmann/ElasticWorkshop/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+You probably came from [cdax.ch](https://cdax.ch/?s=elasticsearch+workshop) or [https://pascalth.medium.com/](https://pascalth.medium.com/). 
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Due to readability and publishing rules i migrated all the code to this repo. Feel free. The structure is analoge of the Workshop subtitles.
 
-### Markdown
+### The workshops
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+1. [enrich_documents/](https://pascalthalmann.github.io/ElasticWorkshop/1_enrich_documents/)
+2. [pipelines](https://pascalthalmann.github.io/ElasticWorkshop/2_pipelines/)
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/PascalThalmann/ElasticWorkshop/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
