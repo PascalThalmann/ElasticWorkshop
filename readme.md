@@ -6,6 +6,6 @@ Due to readability and publishing rules i migrated all the code to this repo. Fe
 
 ### The workshops
 
-1. [enrich_documents/](https://pascalthalmann.github.io/ElasticWorkshop/1_enrich_documents/)
+1. [enrich_documents](https://pascalthalmann.github.io/ElasticWorkshop/1_enrich_documents/)
 2. [pipelines](https://pascalthalmann.github.io/ElasticWorkshop/2_pipelines/)
 
