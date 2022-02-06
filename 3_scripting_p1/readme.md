@@ -180,8 +180,8 @@ PUT _scripts/calc_age_template
           "type": "long",
           "script": { "source": 
             """ 
-             long age_new = {{act_year}} - doc['year_of_birth'].value;
-             emit(age_new)
+             long age = {{act_year}} - doc['year_of_birth'].value;
+             emit(age)
             """
           }
         }
