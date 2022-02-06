@@ -144,4 +144,57 @@ POST _reindex
 GET persons_with_age/_search
 
 ```
+## Calling scripts with the _search API
 
+```
+PUT _scripts/calc_age_script
+{
+  "script": {
+    "lang": "painless", 
+    "source": """
+    params['today'] - doc['year_of_birth'].value;
+    """
+  }
+}
+
+GET persons/_search
+{
+  "script_fields": {
+    "age": {
+      "script": {"id": "calc_age_script", "params": { "today": 2022 } }
+    }
+  }
+}
+
+GET persons/_search
+{
+  "runtime_mappings": {
+    "age": {
+      "type": "long",
+      "script": { "id": "calc_age_script", "params": { "today": 2020 } }
+    }
+  }
+}
+
+PUT _scripts/calc_age_script
+{
+  "script": {
+    "lang": "painless", 
+    "source": """
+    params['today'] > doc['year_of_birth'].value;
+    """
+  }
+}
+
+GET persons/_search
+{
+  "query": {
+    "script": {
+      "script": {
+        "id": "calc_age_script",
+        "params": { "today": 2022 }
+      }
+    }
+  }
+}
+```
