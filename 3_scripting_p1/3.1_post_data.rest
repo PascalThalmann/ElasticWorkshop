@@ -1,0 +1,6 @@
+PUT persons/_doc/1
+{
+  "name": "John",
+  "sur_name": "Smith",
+  "year_of_birth": 1925 
+}
