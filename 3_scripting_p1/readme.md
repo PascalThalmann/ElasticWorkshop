@@ -49,10 +49,10 @@ GET persons/_search
 {
   "runtime_mappings": {
     "age": {
-      "type": "double",
+      "type": "long",
       "script": {
         "source": """
-        double age = params.today - doc['year_of_birth'].value;
+        long age = params.today - doc['year_of_birth'].value;
         emit(age)
         """,
         "params": { "today": 2022 }
@@ -178,19 +178,26 @@ PUT _scripts/calc_age_template
       "runtime_mappings": {
         "age": {
           "type": "long",
-          "script": { "source": "emit({{my_today}} - doc['year_of_birth'].value);"}
+          "script": { "source": 
+            """ 
+             long age_new = {{act_year}} - doc['year_of_birth'].value;
+             emit(age_new)
+            """
+          }
         }
-      }
+      },
+      "fields": [ "age" ]
     }
   },
-  "params": { "today" : "my_today"}
+  "params": { "act_year" : "today"}
 }
 
 GET persons/_search/template
 {
+  "source": "fields",
   "id": "calc_age_template",
   "params": {
-    "my_today": 2022
+    "act_year": 2022
   }
 }
 ```
