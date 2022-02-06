@@ -165,36 +165,32 @@ GET persons/_search
     }
   }
 }
+```
 
-GET persons/_search
-{
-  "runtime_mappings": {
-    "age": {
-      "type": "long",
-      "script": { "id": "calc_age_script", "params": { "today": 2020 } }
-    }
-  }
-}
+## Calling scripts with a search-template
 
-PUT _scripts/calc_age_script
+```
+PUT _scripts/calc_age_template
 {
   "script": {
-    "lang": "painless", 
-    "source": """
-    params['today'] > doc['year_of_birth'].value;
-    """
-  }
-}
-
-GET persons/_search
-{
-  "query": {
-    "script": {
-      "script": {
-        "id": "calc_age_script",
-        "params": { "today": 2022 }
+    "lang": "mustache",
+    "source": {
+      "runtime_mappings": {
+        "age": {
+          "type": "long",
+          "script": { "source": "emit({{my_today}} - doc['year_of_birth'].value);"}
+        }
       }
     }
+  },
+  "params": { "today" : "my_today"}
+}
+
+GET persons/_search/template
+{
+  "id": "calc_age_template",
+  "params": {
+    "my_today": 2022
   }
 }
 ```
