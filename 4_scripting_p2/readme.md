@@ -132,3 +132,26 @@ GET companies/_search
 }
 
 ```
+
+
+## scripted-fields context
+
+```
+GET companies/_search
+{
+  "query": {
+    "match_all": {}
+  }, 
+  "script_fields": {
+    "free_float": {
+      "script": {
+        "source": """
+          double outstanding = doc.market_cap.value / doc['share_price'].value;
+          outstanding = (long)outstanding; 
+        return (outstanding)
+        """
+      }
+    }
+  }
+}
+```
