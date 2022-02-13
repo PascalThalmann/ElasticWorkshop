@@ -120,11 +120,10 @@ GET companies/_search
       "script": {
         "lang": "painless", 
         "source": """
-  long result;
-  double mc = doc['market_cap'].value.doubleValue();
-  double out =  mc / doc.share_price.value;
-  result = (long)out;
-  emit(result);
+        long result;
+        double outstanding = doc.market_cap.value / doc['share_price'].value;
+        result = (long)outstanding; 
+        emit(result);
         """
       }
     }
