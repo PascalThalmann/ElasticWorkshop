@@ -11,7 +11,7 @@ PUT companies/_doc/1
 
 ```
 
-## types
+## ArrayLists
 
 ```
 GET companies/_search
@@ -26,6 +26,30 @@ GET companies/_search
         al.add(mc);
         al.add(10);
         emit(al.get(0) + al.get(1))
+        """
+      }
+    }
+  },
+  "fields": [
+    "test_types"
+  ]
+}
+```
+
+## HashMaps
+
+```
+GET companies/_search
+{
+  "runtime_mappings": {
+    "test_types": {
+      "type": "long",
+      "script": {
+        "source": """
+        Map mp = new HashMap();
+        mp.put('one', 1);
+        mp.put('two', 2);
+        emit(mp.get('two'))
         """
       }
     }
