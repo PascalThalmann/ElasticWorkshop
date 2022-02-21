@@ -1,6 +1,6 @@
 # Elastic Workshop #5 – Scripting Part 3
 
-You can find here all Queries in full length for the workshop [Elastic Workshop #5 – Scripting Part 3]()
+You can find here all Queries in full length for the workshop [Elastic Workshop #5 – Scripting Part 3](https://cdax.ch/2022/02/19/elasticsearch-workshop-5-scripting-part-3/)
 
 ## data
 
