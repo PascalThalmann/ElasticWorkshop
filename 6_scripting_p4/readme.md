@@ -57,6 +57,27 @@ GET companies/_search
   }
 }
 
+GET companies/_search
+{
+  "query": {
+    "match_all": {}
+  },
+  "script_fields": {
+    "market_cap_in_billions": {
+      "script": {
+        "source": """
+        String market_cap_string = doc['market_cap.keyword'].value;
+        Pattern p = /([0-9]+)([A-Za-z]+)$/;
+        //def result = p.matcher(market_cap_string).matches();
+        //def result = p.matcher(market_cap_string).group(1);
+        def market_cap = p.matcher(market_cap_string).replaceAll('$1');
+        return(market_cap)
+        """
+      }
+    }
+  }
+}
+
 ```
 
 ## examples
