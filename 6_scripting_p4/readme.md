@@ -2,6 +2,18 @@
 
 You can find here all Queries in full length for the workshop [Elastic Workshop #5 – Scripting Part 3](https://cdax.ch/2022/02/19/elasticsearch-workshop-5-scripting-part-3/)
 
+
+## preparation
+
+```
+GET _cluster/settings?include_defaults&filter_path=defaults.script.painless.regex
+```
+
+/etc/elasticsearch/elasticsearch.yml:
+```
+script.painless.regex.enabled: true
+```
+
 ## data
 
 ```
