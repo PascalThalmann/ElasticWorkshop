@@ -4,10 +4,3 @@ Welcome to [pascalthalmann.github.io/ElasticWorkshop/](https://pascalthalmann.gi
 
 Due to readability and publishing rules i migrated all the code to this repo. Feel free. The structure is analoge of the Workshop subtitles.
 
-### The workshops
-
-1. [enrich_documents](https://pascalthalmann.github.io/ElasticWorkshop/1_enrich_documents/)
-2. [pipelines](https://pascalthalmann.github.io/ElasticWorkshop/2_pipelines/)
-3. [scripting part1](https://github.com/PascalThalmann/ElasticWorkshop/tree/gh-pages/3_scripting_p1)
-3. [scripting part2](https://github.com/PascalThalmann/ElasticWorkshop/tree/gh-pages/4_scripting_p2)
-
